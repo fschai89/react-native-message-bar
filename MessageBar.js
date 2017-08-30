@@ -446,19 +446,12 @@ class MessageBar extends Component {
       var avatar = this.state.avatar
 
       if (typeof avatar === 'string') {
-        if (avatar.match(/^https?:/)) {
-          // this is a network file
-          imageSource = { uri: avatar }
-        } else {
-          // this is a local file : require('<path/to/my/local/image.extension>')
-          imageSource = avatar
-        }
-
-        return <Image source={imageSource} style={this.state.avatarStyle} />
-      } else if (React.isValidElement(avatar)) {
-        // this is a react component
-        return avatar
+        imageSource = { uri: avatar }
+      } else {
+        // this is a local file : require('<path/to/my/local/image.extension>')
+        imageSource = avatar
       }
+      return <Image source={imageSource} style={this.state.avatarStyle} />
     }
   }
 
